@@ -181,6 +181,16 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"navbar": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "navbar";
+  data: InferEntrySchema<"navbar">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 "posts": Record<string, {
   id: string;
   render(): Render[".md"];

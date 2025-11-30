@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import Container from "./Container.astro";
+
+const navbarEntry = await getCollection("navbar");
+const data = navbarEntry?.[0]?.data || {};
+const profileImage = data.profileImage || null;
+const links = data.links || [];
+---
+
+<Container>
+  <nav class="flex items-center justify-between py-4 px-6">
+    <div class="flex items-center gap-4">
+      {
+        profileImage ? (
+          <a href="/" class="block">
+            <img
+              src={profileImage}
+              alt="Profile"
+              class="h-10 w-10 rounded-full object-cover"
+            />
+          </a>
+        ) : (
+          <a href="/" class="text-lg font-semibold">
+            Home
+          </a>
+        )
+      }
+    </div>
+
+    <ul class="flex items-center gap-6">
+      {
+        links.map((link) => (
+          <li>
+            <a class="text-sm font-medium hover:underline" href={link.href}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</Container>

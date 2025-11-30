@@ -16,4 +16,11 @@ const authors = defineCollection({
   }),
 });
 
-export const collections = { posts, authors };
+const navbar = defineCollection({
+  schema: z.object({
+    profileImage: z.string().optional(),
+    links: z.array(z.object({ label: z.string(), href: z.string() })),
+  }),
+});
+
+export const collections = { posts, authors, navbar };
