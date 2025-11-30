@@ -5,18 +5,6 @@ Last-updated: 2025-11-30
 Purpose: provide concise, actionable guidance to Copilot Chat sessions working on this repository.
 
 Rules:
-
-Quick checklist for Copilot Chat sessions:
-
-Contact: create `HANDOFF.md` if you need to surface questions to the repo owner.
-```instructions
-# Copilot Repo Instructions
-
-Last-updated: 2025-11-30
-
-Purpose: provide concise, actionable guidance to Copilot Chat sessions working on this repository.
-
-Rules:
 - Read `PROJECT_PLAN.md` at the repository root and treat it as the authoritative project plan.
 - Before making changes, summarize current progress by reading `PROJECT_PLAN.md` and the `src/` folder.
 - When updating progress, check or uncheck items in `PROJECT_PLAN.md` and commit with clear messages (e.g., `chore: mark X complete`).
