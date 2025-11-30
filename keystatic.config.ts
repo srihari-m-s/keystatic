@@ -64,5 +64,34 @@ export default config({
         }),
       },
     }),
+    navbar: singleton({
+      label: "Navbar",
+      path: "src/content/navbar",
+      format: { data: "yaml", contentField: "markdoc" },
+      schema: {
+        markdoc: fields.emptyContent({ extension: "mdoc" }),
+        // Profile image shown on the left and linked to home
+        profileImage: fields.image({
+          label: "Profile Image",
+          directory: "src/assets/images/site",
+          publicPath: "/src/assets/images/site",
+          validation: { isRequired: false },
+        }),
+        // Links shown in the navbar
+        links: fields.array(
+          fields.object({
+            label: fields.text({ label: "Label" }),
+            href: fields.text({ label: "Href" }),
+          }),
+          {
+            label: "Links",
+            itemLabel: (item) => item.fields.label.value,
+            validation: {
+              length: { min: 1 },
+            },
+          }
+        ),
+      },
+    }),
   },
 });
