@@ -1,4 +1,4 @@
-import { config, fields, collection } from "@keystatic/core";
+import { config, fields, collection, singleton } from "@keystatic/core";
 
 export default config({
   storage: {
@@ -6,6 +6,7 @@ export default config({
   },
   collections: {
     posts: collection({
+      entryLayout: "content",
       label: "Posts",
       slugField: "title",
       path: "src/content/posts/*/",
@@ -47,6 +48,19 @@ export default config({
         avatar: fields.image({
           label: "Avatar",
           directory: "src/assets/images/authors",
+        }),
+      },
+    }),
+  },
+  singletons: {
+    socialLinks: singleton({
+      label: "Social Links",
+      path: "src/content/social-links",
+      schema: {
+        linkedin: fields.text({
+          label: "LinkedIn",
+          description: "The LinkedIn ID (not the full URL)",
+          validation: { isRequired: false },
         }),
       },
     }),
