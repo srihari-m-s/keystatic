@@ -40,8 +40,9 @@ export default config({
       label: "Authors",
       slugField: "name",
       path: "src/content/authors/*",
-      format: { data: "json" },
+      format: { data: "yaml", contentField: "markdoc" },
       schema: {
+        markdoc: fields.emptyContent({ extension: "mdoc" }),
         name: fields.slug({ name: { label: "Name" } }),
         avatar: fields.image({
           label: "Avatar",
