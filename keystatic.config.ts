@@ -21,6 +21,19 @@ export default config({
             },
           },
         }),
+        authors: fields.array(
+          fields.relationship({
+            label: "Author",
+            collection: "authors",
+            validation: {
+              isRequired: true,
+            },
+          }),
+          {
+            label: "Authors",
+            itemLabel: (item) => item.value || "Select an author",
+          }
+        ),
       },
     }),
     authors: collection({
