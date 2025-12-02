@@ -7,7 +7,7 @@ last_compiled: 2025-12-02 23:50:54
 # To change these settings, run ~/agent-os/scripts/project-update.sh to re-compile your project with the new settings.
 # ================================================
 profile: default
-claude_code_commands: true
-use_claude_code_subagents: true
-agent_os_commands: false
-standards_as_claude_code_skills: false
+claude_code_commands: false
+use_claude_code_subagents: false
+standards_as_claude_code_skills: true
+agent_os_commands: true
