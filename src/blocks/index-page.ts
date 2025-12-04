@@ -116,12 +116,6 @@ export const indexPageSingleton = singleton({
       label: "Description",
       description: "Brief description or tagline for the page",
     }),
-    heroImage: fields.image({
-      label: "Hero Image",
-      directory: "src/assets/images/hero",
-      publicPath: "/src/assets/images/hero",
-      validation: { isRequired: false },
-    }),
     content: fields.markdoc({
       label: "Content",
       options: {

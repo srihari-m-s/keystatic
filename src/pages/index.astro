@@ -12,33 +12,8 @@ const renderedContent = indexPageEntry ? await render(indexPageEntry) : null;
   description={indexPageEntry?.data.description}
 >
   <Container>
-    <div class="space-y-6">
-      {renderedContent ? <renderedContent.Content /> : (
-        <div class="flex flex-col md:flex-row gap-10 items-center">
-          <div class="space-y-4 md:w-1/2">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl">
-              {indexPageEntry?.data.title || "Welcome to My Portfolio"}
-            </h1>
-            {
-              indexPageEntry?.data.description && (
-                <p class="text-xl">{indexPageEntry.data.description}</p>
-              )
-            }
-          </div>
-          
-          <div class="md:w-1/2 flex justify-center">
-            {
-              indexPageEntry?.data.heroImage && (
-                <img
-                  src={indexPageEntry.data.heroImage}
-                  alt="Hero Image"
-                  class="mask mask-squircle w-64 h-64 object-cover"
-                />
-              )
-            }
-          </div>
-        </div>
-      )}
+    <div class="space-y-6 max-w-4xl mx-auto prose lg:prose-lg">
+      {renderedContent ? <renderedContent.Content /> : null}
     </div>
   </Container>
 </Layout>
