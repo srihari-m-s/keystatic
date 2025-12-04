@@ -1,10 +1,11 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, getEntry, getEntries } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Container from "@/layouts/Container.astro";
 
 const posts = await getCollection("posts");
 const indexPageEntry = await getEntry("indexPage", "index");
+console.log("Index Page Entry:", indexPageEntry);
 ---
 
 <Layout title={indexPageEntry?.data.title || "Portfolio"}>
@@ -12,21 +13,27 @@ const indexPageEntry = await getEntry("indexPage", "index");
     <div class="space-y-6">
       <div class="text-center">
         <h1>{indexPageEntry?.data.title || "Welcome to My Portfolio"}</h1>
-        {indexPageEntry?.data.subtitle && <p class="text-xl">{indexPageEntry.data.subtitle}</p>}
-        {indexPageEntry?.data.heroImage && (
-          <img 
-            src={indexPageEntry.data.heroImage} 
-            alt="Hero Image" 
-            class="mx-auto my-6 rounded-full w-32 h-32 object-cover"
-          />
-        )}
+        {
+          indexPageEntry?.data.subtitle && (
+            <p class="text-xl">{indexPageEntry.data.subtitle}</p>
+          )
+        }
+        {
+          indexPageEntry?.data.heroImage && (
+            <img
+              src={indexPageEntry.data.heroImage}
+              alt="Hero Image"
+              class="mx-auto my-6 rounded-full w-32 h-32 object-cover"
+            />
+          )
+        }
       </div>
-      
+
       <div class="prose max-w-none">
         <!-- Content will be rendered here when we implement Markdoc rendering -->
         <p>This is a portfolio page managed by Keystatic CMS.</p>
       </div>
-      
+
       <div>
         <h2>Latest Posts</h2>
         <ul class="list">
