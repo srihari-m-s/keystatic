@@ -112,8 +112,8 @@ export const indexPageSingleton = singleton({
       label: "Page Title",
       description: "Main title for the index page",
     }),
-    subtitle: fields.text({
-      label: "Subtitle",
+    description: fields.text({
+      label: "Description",
       description: "Brief description or tagline for the page",
     }),
     heroImage: fields.image({

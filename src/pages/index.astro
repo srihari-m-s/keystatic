@@ -1,38 +1,44 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Container from "@/layouts/Container.astro";
 
 const indexPageEntry = await getEntry("indexPage", "index");
+const renderedContent = indexPageEntry ? await render(indexPageEntry) : null;
 ---
 
-<Layout title={indexPageEntry?.data.title || "Portfolio"}>
+<Layout
+  title={indexPageEntry?.data.title || "Portfolio"}
+  description={indexPageEntry?.data.description}
+>
   <Container>
     <div class="space-y-6">
-      <div class="flex gap-20">
-        <div class="space-y-4 self-center">
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl">
-            {indexPageEntry?.data.title || "Welcome to My Portfolio"}
-          </h1>
-          {
-            indexPageEntry?.data.subtitle && (
-              <p class="text-xl">{indexPageEntry.data.subtitle}</p>
-            )
-          }
+      {renderedContent ? <renderedContent.Content /> : (
+        <div class="flex flex-col md:flex-row gap-10 items-center">
+          <div class="space-y-4 md:w-1/2">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl">
+              {indexPageEntry?.data.title || "Welcome to My Portfolio"}
+            </h1>
+            {
+              indexPageEntry?.data.description && (
+                <p class="text-xl">{indexPageEntry.data.description}</p>
+              )
+            }
+          </div>
+          
+          <div class="md:w-1/2 flex justify-center">
+            {
+              indexPageEntry?.data.heroImage && (
+                <img
+                  src={indexPageEntry.data.heroImage}
+                  alt="Hero Image"
+                  class="mask mask-squircle w-64 h-64 object-cover"
+                />
+              )
+            }
+          </div>
         </div>
-
-        <div>
-          {
-            indexPageEntry?.data.heroImage && (
-              <img
-                src={indexPageEntry.data.heroImage}
-                alt="Hero Image"
-                class="mx-auto my-6 rounded-full w-64 h-64 object-cover"
-              />
-            )
-          }
-        </div>
-      </div>
+      )}
     </div>
   </Container>
 </Layout>

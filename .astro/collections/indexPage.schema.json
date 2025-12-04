@@ -7,10 +7,7 @@
         "title": {
           "type": "string"
         },
-        "subtitle": {
-          "type": "string"
-        },
-        "heroImage": {
+        "description": {
           "type": "string"
         },
         "$schema": {

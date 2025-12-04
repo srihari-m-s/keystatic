@@ -30,8 +30,7 @@ const indexPage = defineCollection({
   loader: glob({ pattern: "**/[^_]*.mdoc", base: "./src/content/index-page" }),
   schema: z.object({
     title: z.string(),
-    subtitle: z.string().optional(),
-    heroImage: z.string().optional(),
+    description: z.string().optional(),
   }),
 });
 
