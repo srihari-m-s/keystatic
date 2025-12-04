@@ -1,4 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
+import { indexPageSingleton } from "@/blocks/index-page";
 
 export default config({
   storage: {
@@ -93,5 +94,6 @@ export default config({
         ),
       },
     }),
+    indexPage: indexPageSingleton,
   },
 });
