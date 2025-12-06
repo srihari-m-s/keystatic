@@ -4,13 +4,15 @@ interface Props {
   position: string;
   duration: string;
   description: string;
+  isPresent: boolean;
 }
 
-const { company, position, duration, description } = Astro.props as Props;
+const { company, position, duration, description, isPresent } =
+  Astro.props as Props;
 ---
 
 <li class="m-0!">
-  <hr />
+  <hr class="w-0.5 bg-primary" />
   <div class="timeline-start md:text-end mb-4">
     <p class="font-mono text-xs text-base-content/70">
       {duration}
@@ -28,5 +30,5 @@ const { company, position, duration, description } = Astro.props as Props;
       {description}
     </p>
   </div>
-  <hr />
+  <hr class:list={["w-0.5", isPresent ? "" : "bg-primary"]} />
 </li>

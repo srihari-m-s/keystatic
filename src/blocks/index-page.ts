@@ -35,7 +35,7 @@ export const experience = repeating({
   },
 });
 
-export const experienceItem = wrapper({
+export const experienceItem = block({
   label: "Experience Item",
   schema: {
     company: fields.text({ label: "Company" }),
@@ -44,6 +44,10 @@ export const experienceItem = wrapper({
     description: fields.text({
       label: "Description",
       multiline: true,
+    }),
+    isPresent: fields.checkbox({
+      label: "Currently Working Here",
+      defaultValue: false,
     }),
   },
 });
