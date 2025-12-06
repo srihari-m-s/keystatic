@@ -34,5 +34,20 @@ export default defineMarkdocConfig({
         isPresent: { type: Boolean },
       },
     },
+    projects: {
+      render: component("./src/components/Projects.astro"),
+      attributes: {
+        title: { type: String },
+      },
+    },
+    projectItem: {
+      render: component("./src/components/ProjectItem.astro"),
+      attributes: {
+        title: { type: String },
+        description: { type: String },
+        link: { type: String },
+        technologies: { type: Array },
+      },
+    },
   },
 });

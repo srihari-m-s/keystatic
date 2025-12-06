@@ -79,7 +79,7 @@ export const projects = repeating({
   },
 });
 
-export const projectItem = wrapper({
+export const projectItem = block({
   label: "Project Item",
   schema: {
     title: fields.text({ label: "Project Title" }),
@@ -135,4 +135,5 @@ export const indexPageSingleton = singleton({
       components: indexPageBlocks,
     }),
   },
+  entryLayout: "content",
 });
