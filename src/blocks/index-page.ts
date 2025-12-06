@@ -1,8 +1,9 @@
 import { wrapper, repeating, block } from "@keystatic/core/content-components";
 import { fields, singleton } from "@keystatic/core";
+import { sectionWrapper, heroSectionWrapper } from "./common/sections";
 
 // Hero section block - wrapper component with title, subtitle, and image
-export const hero = wrapper({
+export const hero = block({
   label: "Hero Section",
   schema: {
     title: fields.text({
@@ -94,6 +95,8 @@ export const projectItem = wrapper({
 
 // Export all blocks as a single object
 export const indexPageBlocks = {
+  sectionWrapper,
+  heroSectionWrapper,
   hero,
   experience,
   experienceItem,

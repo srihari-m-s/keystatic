@@ -11,9 +11,7 @@ const renderedContent = indexPageEntry ? await render(indexPageEntry) : null;
   title={indexPageEntry?.data.title || "Portfolio"}
   description={indexPageEntry?.data.description}
 >
-  <Container>
-    <div class="space-y-6 max-w-4xl mx-auto prose lg:prose-lg">
-      {renderedContent ? <renderedContent.Content /> : null}
-    </div>
-  </Container>
+  <div class="max-w-4xl mx-auto prose lg:prose-lg">
+    {renderedContent ? <renderedContent.Content /> : null}
+  </div>
 </Layout>

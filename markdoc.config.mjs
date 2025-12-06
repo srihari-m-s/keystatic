@@ -10,5 +10,13 @@ export default defineMarkdocConfig({
         image: { type: String },
       },
     },
+    sectionWrapper: {
+      render: component('./src/components/SectionWrapper.astro'),
+      attributes: {},
+    },
+    heroSectionWrapper: {
+      render: component('./src/components/HeroSectionWrapper.astro'),
+      attributes: {},
+    },
   },
 });
