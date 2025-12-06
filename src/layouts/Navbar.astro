@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Container from "./Container.astro";
+import ThemeController from "@/components/ThemeController.astro";
 
 const navbarEntry = await getCollection("navbar");
 const data = navbarEntry?.[0]?.data || {};
@@ -11,7 +12,7 @@ const links = data.links || [];
 <header class="fixed top-0 w-full py-4">
   <Container>
     <nav
-      class="flex items-center justify-between py-4 px-6 max-w-2xl mx-auto border rounded-full border-gray-700"
+      class="flex items-center justify-between p-2 max-w-2xl mx-auto border border-gray-200 dark:border-gray-700 rounded-full"
     >
       <div class="flex items-center gap-4">
         {
@@ -20,7 +21,7 @@ const links = data.links || [];
               <img
                 src={profileImage}
                 alt="Profile"
-                class="h-10 w-10 rounded-full object-cover"
+                class="h-9 w-9 rounded-full object-cover"
               />
             </a>
           ) : (
@@ -42,6 +43,10 @@ const links = data.links || [];
           ))
         }
       </ul>
+
+      <div>
+        <ThemeController />
+      </div>
     </nav>
   </Container>
 </header>
