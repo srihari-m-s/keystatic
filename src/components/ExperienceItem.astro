@@ -1,0 +1,32 @@
+---
+interface Props {
+  company: string;
+  position: string;
+  duration: string;
+  description: string;
+}
+
+const { company, position, duration, description } = Astro.props as Props;
+---
+
+<li class="m-0!">
+  <hr />
+  <div class="timeline-start md:text-end mb-4">
+    <p class="font-mono text-xs text-base-content/70">
+      {duration}
+    </p>
+    <h3 class="text-lg font-semibold">
+      {position}
+      <span class="text-base-content/70"> @ {company}</span>
+    </h3>
+  </div>
+  <div class="timeline-middle">
+    <span class="inline-flex h-3 w-3 rounded-full bg-primary"></span>
+  </div>
+  <div class="timeline-end timeline-box">
+    <p>
+      {description}
+    </p>
+  </div>
+  <hr />
+</li>

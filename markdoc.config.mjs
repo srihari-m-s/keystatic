@@ -18,5 +18,20 @@ export default defineMarkdocConfig({
       render: component('./src/components/HeroSectionWrapper.astro'),
       attributes: {},
     },
+    experience: {
+      render: component('./src/components/Experience.astro'),
+      attributes: {
+        title: { type: String },
+      },
+    },
+    experienceItem: {
+      render: component('./src/components/ExperienceItem.astro'),
+      attributes: {
+        company: { type: String },
+        position: { type: String },
+        duration: { type: String },
+        description: { type: String },
+      },
+    },
   },
 });

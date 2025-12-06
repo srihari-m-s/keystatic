@@ -11,8 +11,9 @@ export const hero = block({
       description: "Main heading for the hero section",
     }),
     subtitle: fields.text({
-      label: "Subtitle",
+      label: "Subtext",
       description: "Brief description or tagline",
+      multiline: true,
     }),
     image: fields.image({
       label: "Hero Image",
