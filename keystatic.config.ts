@@ -56,8 +56,10 @@ export default config({
   singletons: {
     socialLinks: singleton({
       label: "Social Links",
-      path: "src/content/social-links",
+      path: "src/content/social-links/",
+      format: { data: "yaml", contentField: "markdoc" },
       schema: {
+        markdoc: fields.emptyContent({ extension: "mdoc" }),
         linkedin: fields.text({
           label: "LinkedIn",
           description: "The LinkedIn ID (not the full URL)",
@@ -67,7 +69,7 @@ export default config({
     }),
     navbar: singleton({
       label: "Navbar",
-      path: "src/content/navbar",
+      path: "src/content/navbar/",
       format: { data: "yaml", contentField: "markdoc" },
       schema: {
         markdoc: fields.emptyContent({ extension: "mdoc" }),

@@ -34,4 +34,11 @@ const indexPage = defineCollection({
   }),
 });
 
-export const collections = { posts, authors, navbar, indexPage };
+const socialLinks = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.mdoc", base: "./src/content/social-links" }),
+  schema: z.object({
+    linkedin: z.string().optional(),
+  }),
+});
+
+export const collections = { posts, authors, navbar, indexPage, socialLinks };
