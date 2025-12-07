@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Error404 from "@/assets/images/error/404pana.svg";
+---
+
+<Layout title="Page not found" hideFooter>
+  <main
+    class="min-h-screen flex flex-col items-center justify-center gap-6 bg-base-100 px-4 text-center"
+  >
+    <Error404
+      class="w-full max-w-md"
+      role="img"
+      aria-label="Page not found illustration"
+    />
+
+    <h1 class="text-3xl font-bold">Page not found</h1>
+    <p class="max-w-md text-base-content/70">
+      The page you are looking for doesn&apos;t exist or may have been moved.
+    </p>
+
+    <a href="/" class="btn btn-primary"> Return home </a>
+  </main>
+</Layout>

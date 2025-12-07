@@ -69,7 +69,7 @@ export default config({
         avatar: fields.image({
           label: "Avatar",
           directory: "src/assets/images/authors",
-          publicPath: "@/assets/images/authors",
+          publicPath: "/src/assets/images/authors",
         }),
       },
     }),
@@ -101,8 +101,8 @@ export default config({
         // Profile image shown on the left and linked to home
         profileImage: fields.image({
           label: "Profile Image",
-          directory: "src/assets/images/site",
-          publicPath: "@/assets/images/site",
+          directory: "src/assets/images/navbar",
+          publicPath: "/src/assets/images/navbar",
           validation: { isRequired: false },
         }),
         // Links shown in the navbar

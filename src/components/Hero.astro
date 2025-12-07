@@ -34,7 +34,7 @@ const imageLoader = getContentImageLoader(imagePath);
     <h1 class="text-3xl sm:text-4xl lg:text-5xl">
       {title}
     </h1>
-    <p class="text-xl">
+    <p class="text-xl text-base-conten">
       {subtitle}
     </p>
 
@@ -59,11 +59,9 @@ const imageLoader = getContentImageLoader(imagePath);
     }
   </div>
 
-  <div class="flex-none flex justify-center">
-    <Image
-      src={imageLoader()}
-      alt={title}
-      class="mask mask-squircle w-64 h-64 object-cover"
-    />
+  <div
+    class="flex-none flex justify-center pattern-dots-md text-primary mask mask-squircle p-6"
+  >
+    <Image src={imageLoader()} alt={title} class="w-64 h-64 object-cover" />
   </div>
 </div>

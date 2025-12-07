@@ -57,6 +57,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.17
+      tailwindcss-pattern:
+        specifier: ^0.1.0
+        version: 0.1.0(tailwindcss@4.1.17)
       wrangler:
         specifier: ^4.53.0
         version: 4.53.0(@cloudflare/workers-types@4.20251205.0)
@@ -3390,6 +3393,11 @@ packages:
 
   tabbable@6.3.0:
     resolution: {integrity: sha512-EIHvdY5bPLuWForiR/AN2Bxngzpuwn1is4asboytXtpTgsArc+WmSJKVLlhdh71u7jFcryDqB2A8lQvj78MkyQ==}
+
+  tailwindcss-pattern@0.1.0:
+    resolution: {integrity: sha512-5qmdt/USasaDMd/HdjMQOMpsQRa7PL2+1Q5Z0i06M0qyoSh7g5R0ru9FMbHgxv4l+RDZNjvi/0Uio6JOcnEkQQ==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
 
   tailwindcss@4.1.17:
     resolution: {integrity: sha512-j9Ee2YjuQqYT9bbRTfTZht9W/ytp5H+jJpZKiYdP/bpnXARAuELt9ofP0lPnmHjbga7SNQIxdTAXCmtKVYjN+Q==}
@@ -8016,6 +8024,10 @@ snapshots:
       sax: 1.4.3
 
   tabbable@6.3.0: {}
+
+  tailwindcss-pattern@0.1.0(tailwindcss@4.1.17):
+    dependencies:
+      tailwindcss: 4.1.17
 
   tailwindcss@4.1.17: {}
 

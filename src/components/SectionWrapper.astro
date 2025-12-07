@@ -6,6 +6,8 @@ interface Props {}
 const _props: Props = Astro.props;
 ---
 
-<Container class="py-8 md:py-16">
-  <slot />
-</Container>
+<div class="relative">
+  <Container class="py-8 md:py-16">
+    <slot />
+  </Container>
+</div>

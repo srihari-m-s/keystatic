@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Error500 from "@/assets/images/error/500pana.svg";
+---
+
+<Layout title="Something went wrong" hideFooter>
+  <main
+    class="min-h-screen flex flex-col items-center justify-center gap-6 bg-base-100 px-4 text-center"
+  >
+    <Error500
+      class="w-full max-w-md"
+      role="img"
+      aria-label="Server error illustration"
+    />
+
+    <h1 class="text-3xl font-bold">Something went wrong</h1>
+    <p class="max-w-md text-base-content/70">
+      An unexpected error occurred on our side. Please try again in a moment or
+      return to the homepage.
+    </p>
+
+    <a href="/" class="btn btn-primary"> Return home </a>
+  </main>
+</Layout>
