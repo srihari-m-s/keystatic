@@ -26,6 +26,17 @@ export const hero = block({
       directory: "src/assets/images/hero",
       publicPath: "/src/assets/images/hero",
     }),
+    cta: fields.array(
+      fields.object({
+        label: fields.text({ label: "Button label" }),
+        link: fields.text({ label: "Button link" }),
+      }),
+      {
+        label: "Call to Action Buttons",
+        itemLabel: (item) => item.fields.label.value || "New button",
+        validation: { length: { min: 0, max: 2 } },
+      }
+    ),
   },
 });
 

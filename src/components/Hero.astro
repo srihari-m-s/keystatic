@@ -1,11 +1,30 @@
 ---
+interface CtaItem {
+  label: string;
+  link: string;
+}
+
 interface Props {
   title: string;
   subtitle: string;
   image: string;
+  cta?: CtaItem[] | null;
 }
 
-const { title, subtitle, image } = Astro.props;
+const { title, subtitle, image, cta } = Astro.props as Props;
+
+const isNonEmptyString = (value: unknown): value is string =>
+  typeof value === "string" && value.trim().length > 0;
+
+const isCtaItem = (item: unknown): item is CtaItem => {
+  if (typeof item !== "object" || item === null) return false;
+
+  const candidate = item as Partial<CtaItem>;
+
+  return isNonEmptyString(candidate.label) && isNonEmptyString(candidate.link);
+};
+
+const ctaButtons: CtaItem[] = Array.isArray(cta) ? cta.filter(isCtaItem) : [];
 ---
 
 <div class="flex flex-col md:flex-row gap-10 items-center">
@@ -16,6 +35,26 @@ const { title, subtitle, image } = Astro.props;
     <p class="text-xl">
       {subtitle}
     </p>
+
+    {
+      ctaButtons.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-3">
+          {ctaButtons.map((button, index) => {
+            const variantClasses =
+              index === 0 ? "btn-primary" : "btn-soft btn-secondary";
+
+            return (
+              <a
+                href={button.link}
+                class={`btn no-underline ${variantClasses}`}
+              >
+                {button.label}
+              </a>
+            );
+          })}
+        </div>
+      )
+    }
   </div>
 
   <div class="flex-none flex justify-center">

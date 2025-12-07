@@ -8,6 +8,7 @@ export default defineMarkdocConfig({
         title: { type: String },
         subtitle: { type: String },
         image: { type: String },
+        cta: { type: Array },
       },
     },
     sectionWrapper: {
