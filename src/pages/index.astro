@@ -10,7 +10,7 @@ const renderedContent = indexPageEntry ? await render(indexPageEntry) : null;
   title={indexPageEntry?.data.title || "Portfolio"}
   description={indexPageEntry?.data.description}
 >
-  <div class="max-w-4xl mx-auto prose lg:prose-lg">
+  <div class="max-w-full mx-auto prose lg:prose-lg">
     {renderedContent ? <renderedContent.Content /> : null}
   </div>
 </Layout>
