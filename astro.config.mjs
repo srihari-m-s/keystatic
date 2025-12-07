@@ -7,6 +7,13 @@ import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
 
 const IS_DEVELOPMENT = import.meta.env.MODE === "development";
+const KEYSTATIC_GITHUB_CLIENT_ID = import.meta.env
+  .VITE_KEYSTATIC_GITHUB_CLIENT_ID;
+const KEYSTATIC_GITHUB_CLIENT_SECRET = import.meta.env
+  .VITE_KEYSTATIC_GITHUB_CLIENT_SECRET;
+const KEYSTATIC_SECRET = import.meta.env.VITE_KEYSTATIC_SECRET;
+const PUBLIC_KEYSTATIC_GITHUB_APP_SLUG = import.meta.env
+  .VITE_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,15 +26,13 @@ export default defineConfig({
     },
     plugins: [tailwindcss()],
     define: {
-      KEYSTATIC_GITHUB_CLIENT_ID: JSON.stringify(
-        process.env.KEYSTATIC_GITHUB_CLIENT_ID
-      ),
+      KEYSTATIC_GITHUB_CLIENT_ID: JSON.stringify(KEYSTATIC_GITHUB_CLIENT_ID),
       KEYSTATIC_GITHUB_CLIENT_SECRET: JSON.stringify(
-        process.env.KEYSTATIC_GITHUB_CLIENT_SECRET
+        KEYSTATIC_GITHUB_CLIENT_SECRET
       ),
-      KEYSTATIC_SECRET: JSON.stringify(process.env.KEYSTATIC_SECRET),
+      KEYSTATIC_SECRET: JSON.stringify(KEYSTATIC_SECRET),
       PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: JSON.stringify(
-        process.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
+        PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
       ),
     },
   },
