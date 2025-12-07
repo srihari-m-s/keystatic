@@ -1,6 +1,12 @@
-import { wrapper, repeating, block } from "@keystatic/core/content-components";
+import { block } from "@keystatic/core/content-components";
 import { fields, singleton } from "@keystatic/core";
 import { sectionWrapper, heroSectionWrapper } from "./common/sections";
+import {
+  experience,
+  experienceItem,
+  projectItem,
+  projects,
+} from "./common/work";
 
 // Hero section block - wrapper component with title, subtitle, and image
 export const hero = block({
@@ -23,35 +29,6 @@ export const hero = block({
   },
 });
 
-// Experience block - repeating component for work experience entries
-export const experience = repeating({
-  label: "Experience",
-  children: ["experienceItem"],
-  schema: {
-    title: fields.text({
-      label: "Section Title",
-      defaultValue: "Experience",
-    }),
-  },
-});
-
-export const experienceItem = block({
-  label: "Experience Item",
-  schema: {
-    company: fields.text({ label: "Company" }),
-    position: fields.text({ label: "Position" }),
-    duration: fields.text({ label: "Duration" }),
-    description: fields.text({
-      label: "Description",
-      multiline: true,
-    }),
-    isPresent: fields.checkbox({
-      label: "Currently Working Here",
-      defaultValue: false,
-    }),
-  },
-});
-
 // Skills block - block component for skills展示
 export const skills = block({
   label: "Skills",
@@ -63,37 +40,6 @@ export const skills = block({
     skillsList: fields.array(fields.text({ label: "Skill" }), {
       label: "Skills",
       itemLabel: (item) => item.value || "New skill",
-    }),
-  },
-});
-
-// Projects block - repeating component for portfolio projects
-export const projects = repeating({
-  label: "Projects",
-  children: ["projectItem"],
-  schema: {
-    title: fields.text({
-      label: "Section Title",
-      defaultValue: "Projects",
-    }),
-  },
-});
-
-export const projectItem = block({
-  label: "Project Item",
-  schema: {
-    title: fields.text({ label: "Project Title" }),
-    description: fields.text({
-      label: "Description",
-      multiline: true,
-    }),
-    link: fields.url({
-      label: "Project Link",
-      validation: { isRequired: false },
-    }),
-    technologies: fields.array(fields.text({ label: "Technology" }), {
-      label: "Technologies",
-      itemLabel: (item) => item.value || "New technology",
     }),
   },
 });
