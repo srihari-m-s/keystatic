@@ -1,10 +1,30 @@
-import { config, fields, collection, singleton } from "@keystatic/core";
+import {
+  config,
+  fields,
+  collection,
+  singleton,
+  type LocalConfig,
+  type GitHubConfig,
+} from "@keystatic/core";
 import { indexPageSingleton } from "@/blocks/index-page";
+import { IS_DEVELOPMENT } from "@/const/common";
+
+const localStorage: LocalConfig["storage"] = {
+  kind: "local",
+};
+
+const githubStorage: GitHubConfig["storage"] = {
+  kind: "github",
+  repo: {
+    owner: "srihari-m-s",
+    name: "keystatic",
+  },
+};
+
+const storage = IS_DEVELOPMENT ? localStorage : githubStorage;
 
 export default config({
-  storage: {
-    kind: "local",
-  },
+  storage,
   collections: {
     posts: collection({
       entryLayout: "content",
