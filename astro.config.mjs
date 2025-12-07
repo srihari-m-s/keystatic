@@ -18,6 +18,18 @@ export default defineConfig({
       },
     },
     plugins: [tailwindcss()],
+    define: {
+      KEYSTATIC_GITHUB_CLIENT_ID: JSON.stringify(
+        process.env.KEYSTATIC_GITHUB_CLIENT_ID
+      ),
+      KEYSTATIC_GITHUB_CLIENT_SECRET: JSON.stringify(
+        process.env.KEYSTATIC_GITHUB_CLIENT_SECRET
+      ),
+      KEYSTATIC_SECRET: JSON.stringify(process.env.KEYSTATIC_SECRET),
+      PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: JSON.stringify(
+        process.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
+      ),
+    },
   },
   adapter: cloudflare({
     imageService: "compile",
