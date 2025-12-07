@@ -36,45 +36,80 @@
 </label>
 
 <script>
-  const storageKey = "theme";
+  type Theme = "light" | "dark";
 
-  function getCurrentTheme(): "light" | "dark" {
-    const themeAttr = document.documentElement.getAttribute("data-theme");
-    if (themeAttr === "light" || themeAttr === "dark") return themeAttr;
+  type ThemeUtils = {
+    getStoredOrPreferredTheme: () => Theme;
+    applyTheme: (theme: Theme) => void;
+  };
 
-    try {
-      const stored = localStorage.getItem(storageKey);
-      if (stored === "light" || stored === "dark") return stored;
-    } catch (e) {
-      // ignore
+  function createFallbackThemeUtils(): ThemeUtils {
+    const storageKey = "theme";
+
+    function getStoredOrPreferredTheme(): Theme {
+      const themeAttr = document.documentElement.getAttribute("data-theme");
+      if (themeAttr === "light" || themeAttr === "dark") return themeAttr;
+
+      try {
+        const stored = localStorage.getItem(storageKey);
+        if (stored === "light" || stored === "dark") return stored;
+      } catch (e) {
+        // ignore
+      }
+
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      return prefersDark ? "dark" : "light";
     }
 
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    function applyTheme(theme: Theme): void {
+      document.documentElement.setAttribute("data-theme", theme);
+      try {
+        localStorage.setItem(storageKey, theme);
+      } catch (e) {
+        // ignore
+      }
+    }
 
-    return prefersDark ? "dark" : "light";
+    return { getStoredOrPreferredTheme, applyTheme };
   }
 
-  function applyTheme(theme: "light" | "dark"): void {
-    document.documentElement.setAttribute("data-theme", theme);
-    try {
-      localStorage.setItem(storageKey, theme);
-    } catch (e) {
-      // ignore
+  function getThemeUtils(): ThemeUtils {
+    const anyWindow = window as typeof window & {
+      __themeUtils?: {
+        getStoredOrPreferredTheme?: () => Theme;
+        applyTheme?: (theme: Theme) => void;
+      };
+    };
+
+    const utils = anyWindow.__themeUtils;
+    if (
+      utils &&
+      typeof utils.getStoredOrPreferredTheme === "function" &&
+      typeof utils.applyTheme === "function"
+    ) {
+      return {
+        getStoredOrPreferredTheme: utils.getStoredOrPreferredTheme,
+        applyTheme: utils.applyTheme,
+      };
     }
+
+    return createFallbackThemeUtils();
   }
 
   const controller = document.querySelector<HTMLInputElement>(".theme-controller");
-  if (!controller) {
-    // no controller found; nothing to do
-  } else {
-    const theme = getCurrentTheme();
+
+  if (controller) {
+    const { getStoredOrPreferredTheme, applyTheme } = getThemeUtils();
+
+    const theme = getStoredOrPreferredTheme();
     controller.checked = theme === "dark";
     applyTheme(theme);
 
     controller.addEventListener("change", () => {
-      const nextTheme: "light" | "dark" = controller.checked ? "dark" : "light";
+      const nextTheme: Theme = controller.checked ? "dark" : "light";
       applyTheme(nextTheme);
     });
   }
