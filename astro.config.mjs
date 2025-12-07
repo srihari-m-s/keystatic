@@ -9,10 +9,8 @@ import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic()],
-
   vite: {
     plugins: [tailwindcss()],
   },
-
   adapter: cloudflare({ imageService: "compile" }),
 });
