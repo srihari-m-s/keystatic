@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import { Mail, Linkedin, Dot } from "@lucide/astro";
+import Container from "./Container.astro";
+
+interface SocialLinksData {
+  linkedin?: string;
+  email?: string;
+}
+
+interface FooterData {
+  text?: string;
+}
+
+const socialLinksEntries = await getCollection("socialLinks");
+const socialLinksData =
+  (socialLinksEntries?.[0]?.data as SocialLinksData | undefined) ?? undefined;
+
+const footerEntries = await getCollection("footer");
+const footerData =
+  (footerEntries?.[0]?.data as FooterData | undefined) ?? undefined;
+
+const rawLinkedinId = (socialLinksData?.linkedin || "").trim();
+const linkedinUrl = rawLinkedinId
+  ? `https://www.linkedin.com/in/${rawLinkedinId}`
+  : undefined;
+
+const email = (socialLinksData?.email || "").trim();
+const footerText = (footerData?.text || "").trim();
+
+const hasSocial = Boolean(linkedinUrl || email);
+const hasFooterContent = Boolean(footerText || hasSocial);
+---
+
+{
+  hasFooterContent && (
+    <footer class="mt-16 border-t bg-base-200 dark:bg-neutral-700 border-base-300/60 py-8">
+      <Container>
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          {footerText && (
+            <p class="text-sm leading-relaxed text-base-content/80 m-0!">
+              {footerText}
+            </p>
+          )}
+
+          {hasSocial && (
+            <div class="flex items-center justify-start md:justify-end">
+              {email && (
+                <a
+                  href={`mailto:${email}`}
+                  class="inline-flex items-center justify-center rounded-full p-2 text-base-content/70 hover:text-accent transition-colors"
+                  aria-label="Send email"
+                >
+                  <Mail class="size-5" />
+                </a>
+              )}
+
+              {email && <Dot />}
+
+              {linkedinUrl && (
+                <a
+                  href={linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="inline-flex items-center justify-center rounded-full p-2 text-base-content/70 hover:text-accent transition-colors"
+                  aria-label="LinkedIn profile"
+                >
+                  <Linkedin class="size-5" />
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </Container>
+    </footer>
+  )
+}

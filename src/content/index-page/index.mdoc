@@ -1,0 +1,47 @@
+---
+title: Jane Doe
+description: lorem ipsum dolor sit amel
+---
+{% heroSectionWrapper %}
+{% hero
+   title="Hey! I am Jane Doe"
+   subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum doloremque itaque libero perspiciatis omnis vitae molestias. Aut molestias eveniet animi! Lorem ipsum dolor sit amet consectetur adipisicing elit."
+   image="/src/assets/images/index/avatar_female.png"
+   cta=[{label: "View Resume", link: "/resume"}, {label: "Get in Touch", link: "/#contact"}] /%}
+{% /heroSectionWrapper %}
+
+{% sectionWrapper %}
+{% coreStrengths
+   title="Core Strengths"
+   items=["Financial analysis", "Reporting & MIS", "Budgeting & forecasting", "Valuation basics", "Excel modeling", "Variance analysis"] /%}
+{% /sectionWrapper %}
+
+{% sectionWrapper %}
+{% recentTraining
+   title="Recent Training & Applied Work"
+   description="I've been strengthening my technical foundation through focused financial modeling and valuation training. Alongside the coursework, I've been building small, practical models to apply the concepts directly. I'm continuing to deepen these skills through hands-on practice with real-world-style datasets."
+   items=["Three-statement financial models", "Budgeting and forecasting structures", "Introductory valuation work (including DCF)", "Case-based scenario analysis", "Data cleanup and Excel-based dashboards"] /%}
+{% /sectionWrapper %}
+
+{% sectionWrapper %}
+{% experience title="Experience" %}
+{% experienceItem
+   company="Acme Company"
+   position="Internship"
+   description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum doloremque itaque libero perspiciatis omnis vitae molestias. Aut molestias eveniet animi! Lorem ipsum dolor sit amet consectetur adipisicing elit."
+   isPresent=false /%}
+
+{% experienceItem
+   company="Acme company"
+   position="Lorem ipsum"
+   description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum doloremque itaque libero perspiciatis omnis vitae molestias. Aut molestias eveniet animi! Lorem ipsum dolor sit amet consectetur adipisicing elit."
+   isPresent=false /%}
+{% /experience %}
+
+{% sectionWrapper %}
+{% whatIAmLookingFor
+   title="What I am looking for"
+   badges=["Equity Research", "Financial Modelling", "Investment Analysis"]
+   description="I'm currently exploring roles in investment research and financial analysis where I can apply structured thinking, careful data evaluation, and clear communication. I'm particularly interested in opportunities that combine analytical depth with sector understanding. I'm looking for environments that value precision, thoughtful research, and steady growth." /%}
+{% /sectionWrapper %}
+{% /sectionWrapper %}

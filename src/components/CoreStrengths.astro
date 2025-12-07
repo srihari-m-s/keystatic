@@ -1,0 +1,34 @@
+---
+import { BadgeCheck } from "@lucide/astro";
+import { filterNonEmptyStrings } from "@/utils/string";
+import Section from "./Section.astro";
+
+interface Props {
+  title: string;
+  items?: string[] | null;
+}
+
+const { title, items } = Astro.props as Props;
+
+const strengths: string[] = filterNonEmptyStrings(items);
+
+const headingId = "core-strengths-heading";
+---
+
+<Section headingId={headingId} title={title}>
+  {
+    strengths.length > 0 && (
+      <ul
+        class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        aria-label="Core strengths list"
+      >
+        {strengths.map((strength) => (
+          <li class="flex items-center gap-3">
+            <BadgeCheck class="flex-none size-5" />
+            <span class="text-base leading-relaxed text-left">{strength}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Section>

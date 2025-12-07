@@ -1,22 +1,45 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-
-const { slug } = Astro.params;
-if (!slug) throw new Error('Slug not found');
-const post = await getEntry('posts', slug);
-
-if (!post) throw new Error('No post found for this slug');
-const { Content } = await post.render();
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PostAuthors from "../../components/PostAuthors.astro";
 
 // Generate static pages
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map(post => ({ params: { slug: post.slug } }));
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({ params: { slug: post.slug } }));
 }
+
+interface AuthorInfo {
+  name: string;
+  avatar?: string | null;
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error("Slug not found");
+const post = await getEntry("posts", slug);
+if (!post) throw new Error("No post found for this slug");
+
+const authors: AuthorInfo[] = await Promise.all(
+  post.data.authors.map(async (authorSlug) => {
+    const authorEntry = await getEntry("authors", authorSlug!);
+    if (!authorEntry) throw new Error(`Author not found: ${authorSlug}`);
+
+    const data = authorEntry.data as { name?: string; avatar?: string | null };
+
+    return {
+      name: data.name ?? String(authorSlug),
+      avatar: data.avatar ?? null,
+    } satisfies AuthorInfo;
+  })
+);
+
+const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-  <h1>{post.data.title}</h1>
-  <Content />
+  <div class="max-w-5xl space-y-6 mx-auto">
+    <h1>{post.data.title}</h1>
+    <PostAuthors authors={authors} />
+    <Content />
+  </div>
 </Layout>

@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  link?: string | null;
+  technologies?: string[] | null;
+}
+
+const { title, description, link, technologies } = Astro.props as Props;
+
+const hasLink = typeof link === "string" && link.trim().length > 0;
+const techList = Array.isArray(technologies)
+  ? technologies.filter(Boolean)
+  : [];
+---
+
+<div class="m-0! h-full">
+  <article
+    class="card bg-base-200/50 dark:bg-base-200 card-border shadow-sm h-full"
+  >
+    <div class="card-body gap-4">
+      <header>
+        <h3 class="card-title text-lg font-semibold m-0!">
+          {title}
+        </h3>
+      </header>
+
+      <p class="text-sm m-0! text-base-content/80">
+        {description}
+      </p>
+
+      {
+        techList.length > 0 && (
+          <div
+            class="flex flex-wrap gap-2"
+            aria-label="Technologies used"
+            role="list"
+          >
+            {techList.map((tech) => (
+              <div class="badge badge-soft badge-secondary" role="listitem">
+                {tech}
+              </div>
+            ))}
+          </div>
+        )
+      }
+
+      {
+        hasLink && (
+          <div class="card-actions justify-end">
+            <a
+              href={link}
+              class="btn btn-primary btn-sm no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View project
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </article>
+</div>
