@@ -22,9 +22,7 @@ const description = entry?.data.description as string | undefined;
 ---
 
 <Layout title={title} description={description}>
-  <Container>
-    <div class="max-w-full mx-auto prose lg:prose-lg">
-      {renderedContent ? <renderedContent.Content /> : null}
-    </div>
-  </Container>
+  <div class="max-w-full mx-auto prose lg:prose-lg">
+    {renderedContent ? <renderedContent.Content /> : null}
+  </div>
 </Layout>
