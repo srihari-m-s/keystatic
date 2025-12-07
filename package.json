@@ -1,5 +1,5 @@
 {
-  "name": "@keystatic/templates-astro",
+  "name": "astro-keystatic-template",
   "version": "0.0.61",
   "license": "MIT",
   "repository": {
@@ -8,6 +8,7 @@
     "directory": "templates/astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/markdoc": "^0.12.9",
     "@astrojs/react": "^4.2.0",
     "@keystatic/astro": "^5.0.6",

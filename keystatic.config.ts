@@ -1,6 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
 import { indexPageSingleton } from "@/blocks/index-page";
-import { resumePageSingleton } from "@/blocks/resume-page";
 
 export default config({
   storage: {
@@ -102,7 +101,6 @@ export default config({
       },
     }),
     indexPage: indexPageSingleton,
-    resumePage: resumePageSingleton,
     footer: singleton({
       label: "Footer",
       path: "src/content/footer/",
