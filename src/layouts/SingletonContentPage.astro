@@ -1,6 +1,7 @@
 ---
 import { getEntry, render } from "astro:content";
 import Layout from "./Layout.astro";
+import Container from "./Container.astro";
 
 // Supported singleton collections for this page wrapper
 // Extend this union if you add more singleton pages.
@@ -21,7 +22,9 @@ const description = entry?.data.description as string | undefined;
 ---
 
 <Layout title={title} description={description}>
-  <div class="mx-auto max-w-full prose lg:prose-lg">
-    {renderedContent ? <renderedContent.Content /> : null}
-  </div>
+  <Container>
+    <div class="max-w-full mx-auto prose lg:prose-lg">
+      {renderedContent ? <renderedContent.Content /> : null}
+    </div>
+  </Container>
 </Layout>
