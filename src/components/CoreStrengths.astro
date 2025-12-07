@@ -1,6 +1,7 @@
 ---
 import { BadgeCheck } from "@lucide/astro";
 import { filterNonEmptyStrings } from "@/utils/string";
+import Section from "./Section.astro";
 
 interface Props {
   title: string;
@@ -14,13 +15,7 @@ const strengths: string[] = filterNonEmptyStrings(items);
 const headingId = "core-strengths-heading";
 ---
 
-<section aria-labelledby={headingId} class="space-y-8 lg:space-y-16">
-  <header class="flex items-baseline justify-center gap-4">
-    <h2 id={headingId} class="text-2xl font-semibold m-0!">
-      {title}
-    </h2>
-  </header>
-
+<Section headingId={headingId} title={title}>
   {
     strengths.length > 0 && (
       <ul
@@ -36,4 +31,4 @@ const headingId = "core-strengths-heading";
       </ul>
     )
   }
-</section>
+</Section>

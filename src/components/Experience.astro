@@ -1,4 +1,6 @@
 ---
+import Section from "./Section.astro";
+
 interface Props {
   title: string;
 }
@@ -7,14 +9,8 @@ const { title } = Astro.props as Props;
 const experienceId = "experience-heading";
 ---
 
-<section aria-labelledby={experienceId} class="space-y-8 lg:space-y-16">
-  <header class="flex items-baseline justify-center gap-4">
-    <h2 id={experienceId} class="text-2xl font-semibold m-0!">
-      {title}
-    </h2>
-  </header>
-
+<Section headingId={experienceId} title={title}>
   <ul class="timeline timeline-vertical max-md:timeline-compact">
     <slot />
   </ul>
-</section>
+</Section>
