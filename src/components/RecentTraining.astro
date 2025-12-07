@@ -1,0 +1,46 @@
+---
+import { CheckLine } from "@lucide/astro";
+interface Props {
+  title: string;
+  description: string;
+  items?: string[] | null;
+}
+
+const { title, description, items } = Astro.props as Props;
+
+const isNonEmptyString = (value: unknown): value is string =>
+  typeof value === "string" && value.trim().length > 0;
+
+const bulletItems: string[] = Array.isArray(items)
+  ? items.filter(isNonEmptyString)
+  : [];
+
+const headingId = "recent-training-heading";
+---
+
+<section aria-labelledby={headingId} class="space-y-6 lg:space-y-16">
+  <header class="flex items-baseline justify-center gap-4">
+    <h2 id={headingId} class="text-2xl font-semibold m-0!">
+      {title}
+    </h2>
+  </header>
+
+  {
+    isNonEmptyString(description) && (
+      <p class="text-lg text-left leading-relaxed">{description}</p>
+    )
+  }
+
+  {
+    bulletItems.length > 0 && (
+      <ul class="mt-10 max-w-3xl mx-auto not-prose grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {bulletItems.map((item) => (
+          <div class="flex items-center gap-2">
+            <CheckLine class="size-5 text-secondary" />
+            <li class="text-base leading-relaxed">{item}</li>
+          </div>
+        ))}
+      </ul>
+    )
+  }
+</section>

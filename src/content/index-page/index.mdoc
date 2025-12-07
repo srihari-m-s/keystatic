@@ -6,46 +6,42 @@ description: lorem ipsum dolor sit amel
 {% hero
    title="Hey! I am Jane Doe"
    subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum doloremque itaque libero perspiciatis omnis vitae molestias. Aut molestias eveniet animi! Lorem ipsum dolor sit amet consectetur adipisicing elit."
-   image="/src/assets/images/hero/avatar_female.png"
+   image="/src/assets/images/index/avatar_female.png"
    cta=[{label: "View Resume", link: "/resume"}, {label: "Get in Touch", link: "/#contact"}] /%}
 {% /heroSectionWrapper %}
+
+{% sectionWrapper %}
+{% coreStrengths
+   title="Core Strengths"
+   items=["Financial analysis", "Reporting & MIS", "Budgeting & forecasting", "Valuation basics", "Excel modeling", "Variance analysis"] /%}
+{% /sectionWrapper %}
+
+{% sectionWrapper %}
+{% recentTraining
+   title="Recent Training & Applied Work"
+   description="I've been strengthening my technical foundation through focused financial modeling and valuation training. Alongside the coursework, I've been building small, practical models to apply the concepts directly. I'm continuing to deepen these skills through hands-on practice with real-world-style datasets."
+   items=["Three-statement financial models", "Budgeting and forecasting structures", "Introductory valuation work (including DCF)", "Case-based scenario analysis", "Data cleanup and Excel-based dashboards"] /%}
+{% /sectionWrapper %}
 
 {% sectionWrapper %}
 {% experience title="Experience" %}
 {% experienceItem
    company="Acme Company"
    position="Internship"
-   duration="September, 2023 - Febuary, 2024 "
-   description="Worked on internal SaaS and multiple projects for clients spanning a Bus ticket booking app, An Online Book store. The internal Software was a SaaS targeted at bringing together Investors and Startup Founders"
+   description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum doloremque itaque libero perspiciatis omnis vitae molestias. Aut molestias eveniet animi! Lorem ipsum dolor sit amet consectetur adipisicing elit."
    isPresent=false /%}
 
 {% experienceItem
-   company="Spurge Rentals"
-   position="Frontend Developer"
-   duration="Febuary, 2024 - August, 2024"
-   description="Worked as a Frontend developer for internal SaaS application. The SaaS application was for managing inventory in a laptop rental business and involved, Orders, Internal Tasks, Support. "
+   company="Acme company"
+   position="Lorem ipsum"
+   description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum doloremque itaque libero perspiciatis omnis vitae molestias. Aut molestias eveniet animi! Lorem ipsum dolor sit amet consectetur adipisicing elit."
    isPresent=false /%}
-
-{% experienceItem
-   company="Stocky Pro"
-   position="Frontend Developer"
-   duration="August, 2024 - Present"
-   description="I have been working as a frontend developer and involved in building a suite of SaaS targeted at empowering business. Primary involved in building a helpdesk app that ensures a simple efficient support management."
-   isPresent=true /%}
 {% /experience %}
-{% /sectionWrapper %}
 
 {% sectionWrapper %}
-{% projects title="Projects" %}
-{% projectItem
-   title="Lorem ipsum"
-   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas diam orci, vel bibendum felis ultricies eu. Vestibulum non viverra dui. Maecenas tincidunt lorem et lectus congue interdum."
-   link="https://www.example.com"
-   technologies=["React", "HTML"] /%}
-
-{% projectItem
-   title="lorem ipsum dolor sit"
-   description="Aenean faucibus neque vel quam eleifend, eu vulputate ligula euismod. Nulla vestibulum sed dolor vitae aliquam. In vel pretium purus. Vestibulum luctus tellus aliquam nunc suscipit eleifend."
-   technologies=["React", "Tailwind CSS", "Tanstack Query"] /%}
-{% /projects %}
+{% whatIAmLookingFor
+   title="What I am looking for"
+   badges=["Equity Research", "Financial Modelling", "Investment Analysis"]
+   description="I'm currently exploring roles in investment research and financial analysis where I can apply structured thinking, careful data evaluation, and clear communication. I'm particularly interested in opportunities that combine analytical depth with sector understanding. I'm looking for environments that value precision, thoughtful research, and steady growth." /%}
+{% /sectionWrapper %}
 {% /sectionWrapper %}

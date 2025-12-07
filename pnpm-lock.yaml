@@ -20,6 +20,9 @@ importers:
       '@keystatic/core':
         specifier: ^0.5.48
         version: 0.5.48(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@lucide/astro':
+        specifier: ^0.556.0
+        version: 0.556.0(astro@5.16.2(@types/node@24.10.1)(idb-keyval@6.2.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.3)(typescript@5.9.3)(yaml@2.8.1))
       '@tailwindcss/vite':
         specifier: ^4.1.17
         version: 4.1.17(vite@6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
@@ -619,6 +622,11 @@ packages:
     peerDependencies:
       react: ^18.2.0 || ^19.0.0
       react-dom: ^18.2.0 || ^19.0.0
+
+  '@lucide/astro@0.556.0':
+    resolution: {integrity: sha512-S2SzzZcnu2FKz0uuBWx5biMwXrXrGaYcj7DaqUcXQPrdNBbJBgKmylV8JETbnwjCIOJXO26StiVmCr2CGp+nYw==}
+    peerDependencies:
+      astro: ^4 || ^5
 
   '@markdoc/markdoc@0.4.0':
     resolution: {integrity: sha512-fSh4P3Y4E7oaKYc2oNzSIJVPDto7SMzAuQN1Iyx53UxzleA6QzRdNWRxmiPqtVDaDi5dELd2yICoG91csrGrAw==}
@@ -3846,6 +3854,10 @@ snapshots:
     transitivePeerDependencies:
       - next
       - supports-color
+
+  '@lucide/astro@0.556.0(astro@5.16.2(@types/node@24.10.1)(idb-keyval@6.2.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.3)(typescript@5.9.3)(yaml@2.8.1))':
+    dependencies:
+      astro: 5.16.2(@types/node@24.10.1)(idb-keyval@6.2.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.3)(typescript@5.9.3)(yaml@2.8.1)
 
   '@markdoc/markdoc@0.4.0(@types/react@19.2.7)(react@19.2.0)':
     optionalDependencies:

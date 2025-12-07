@@ -50,5 +50,28 @@ export default defineMarkdocConfig({
         technologies: { type: Array },
       },
     },
+    coreStrengths: {
+      render: component("./src/components/CoreStrengths.astro"),
+      attributes: {
+        title: { type: String },
+        items: { type: Array },
+      },
+    },
+    recentTraining: {
+      render: component("./src/components/RecentTraining.astro"),
+      attributes: {
+        title: { type: String },
+        description: { type: String },
+        items: { type: Array },
+      },
+    },
+    whatIAmLookingFor: {
+      render: component("./src/components/WhatIAmLookingFor.astro"),
+      attributes: {
+        title: { type: String },
+        badges: { type: Array },
+        description: { type: String },
+      },
+    },
   },
 });

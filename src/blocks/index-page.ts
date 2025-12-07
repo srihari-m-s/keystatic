@@ -10,6 +10,9 @@ import {
   experienceItem,
   projectItem,
   projects,
+  coreStrengths,
+  recentTraining,
+  whatIAmLookingFor,
 } from "./common/work";
 
 // Skills block - block component for skills展示
@@ -37,6 +40,9 @@ export const indexPageBlocks = {
   skills,
   projects,
   projectItem,
+  coreStrengths,
+  recentTraining,
+  whatIAmLookingFor,
 };
 
 // Index page singleton definition

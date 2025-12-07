@@ -1,13 +1,10 @@
 {
-  "$ref": "#/definitions/socialLinks",
+  "$ref": "#/definitions/footer",
   "definitions": {
-    "socialLinks": {
+    "footer": {
       "type": "object",
       "properties": {
-        "linkedin": {
-          "type": "string"
-        },
-        "email": {
+        "text": {
           "type": "string"
         },
         "$schema": {

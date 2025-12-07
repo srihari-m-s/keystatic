@@ -66,6 +66,10 @@ export default config({
           description: "The LinkedIn ID (not the full URL)",
           validation: { isRequired: false },
         }),
+        email: fields.text({
+          label: "Email",
+          validation: { isRequired: false },
+        }),
       },
     }),
     navbar: singleton({
@@ -99,5 +103,20 @@ export default config({
     }),
     indexPage: indexPageSingleton,
     resumePage: resumePageSingleton,
+    footer: singleton({
+      label: "Footer",
+      path: "src/content/footer/",
+      format: { data: "yaml", contentField: "markdoc" },
+      schema: {
+        markdoc: fields.emptyContent({ extension: "mdoc" }),
+        text: fields.text({
+          label: "Footer text",
+          description: "Short footer message",
+          multiline: true,
+          defaultValue:
+            "If you’d like to connect or discuss an opportunity, I’d be happy to hear from you.",
+        }),
+      },
+    }),
   },
 });

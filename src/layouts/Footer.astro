@@ -1,49 +1,73 @@
 ---
 import { getCollection } from "astro:content";
+import { Mail, Linkedin, Dot } from "@lucide/astro";
 
 interface SocialLinksData {
   linkedin?: string;
+  email?: string;
+}
+
+interface FooterData {
+  text?: string;
 }
 
 const socialLinksEntries = await getCollection("socialLinks");
 const socialLinksData =
   (socialLinksEntries?.[0]?.data as SocialLinksData | undefined) ?? undefined;
 
+const footerEntries = await getCollection("footer");
+const footerData =
+  (footerEntries?.[0]?.data as FooterData | undefined) ?? undefined;
+
 const rawLinkedinId = (socialLinksData?.linkedin || "").trim();
 const linkedinUrl = rawLinkedinId
   ? `https://www.linkedin.com/in/${rawLinkedinId}`
   : undefined;
+
+const email = (socialLinksData?.email || "").trim();
+const footerText = (footerData?.text || "").trim();
+
+const hasSocial = Boolean(linkedinUrl || email);
+const hasFooterContent = Boolean(footerText || hasSocial);
 ---
 
 {
-  linkedinUrl && (
+  hasFooterContent && (
     <footer class="mt-16 border-t bg-base-200 dark:bg-neutral-700 border-base-300/60 py-8">
-      <div class="max-w-2xl mx-auto flex justify-end">
-        <a
-          href={linkedinUrl}
-          target="_blank"
-          rel="noreferrer noopener"
-          class="inline-flex items-center gap-2 text-base-content/70 hover:text-accent transition-colors"
-          aria-label="LinkedIn profile"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-linkedin-icon lucide-linkedin"
-          >
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-            <rect width="4" height="12" x="2" y="9" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-          <span class="sr-only">LinkedIn</span>
-        </a>
+      <div class="max-w-4xl mx-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        {footerText && (
+          <p class="text-sm leading-relaxed text-base-content/80 m-0!">
+            {footerText}
+          </p>
+        )}
+
+        {hasSocial && (
+          <div class="flex items-center justify-start md:justify-end">
+            {linkedinUrl && (
+              <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                class="inline-flex items-center justify-center rounded-full p-2 text-base-content/70 hover:text-accent transition-colors"
+                aria-label="LinkedIn profile"
+              >
+                <Linkedin class="w-5 h-5" />
+              </a>
+            )}
+
+            <Dot class="mx-2" />
+
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                class="inline-flex items-center justify-center rounded-full p-2 text-base-content/70 hover:text-accent transition-colors"
+                aria-label="Send email"
+              >
+                <Mail class="w-5 h-5" />
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </footer>
   )

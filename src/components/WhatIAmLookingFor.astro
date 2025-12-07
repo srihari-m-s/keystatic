@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  badges?: string[] | null;
+  description: string;
+}
+
+const { title, badges, description } = Astro.props as Props;
+
+const isNonEmptyString = (value: unknown): value is string =>
+  typeof value === "string" && value.trim().length > 0;
+
+const badgeItems: string[] = Array.isArray(badges)
+  ? badges.filter(isNonEmptyString)
+  : [];
+
+const headingId = "what-i-am-looking-for-heading";
+---
+
+<section aria-labelledby={headingId} class="space-y-8 lg:space-y-16">
+  <header class="flex items-baseline justify-center gap-4">
+    <h2 id={headingId} class="text-2xl font-semibold m-0!">
+      {title}
+    </h2>
+  </header>
+
+  <div class="grid gap-8 md:grid-cols-[1fr_1.5fr] md:items-start">
+    <div class="flex flex-wrap gap-6">
+      {
+        badgeItems.map((badge) => (
+          <span class="badge badge-soft badge-secondary text-sm">{badge}</span>
+        ))
+      }
+    </div>
+
+    {
+      isNonEmptyString(description) && (
+        <p class="leading-relaxed text-left m-0!">{description}</p>
+      )
+    }
+  </div>
+</section>

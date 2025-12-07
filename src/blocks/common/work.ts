@@ -60,3 +60,56 @@ export const projectItem = block({
     }),
   },
 });
+
+// Core Strengths block - single block with editable strengths list
+export const coreStrengths = block({
+  label: "Core Strengths",
+  schema: {
+    title: fields.text({
+      label: "Section Title",
+      defaultValue: "Core Strengths",
+    }),
+    items: fields.array(fields.text({ label: "Strength" }), {
+      label: "Strengths",
+      itemLabel: (item) => item.value || "New strength",
+    }),
+  },
+});
+
+// Recent Training & Applied Work block
+export const recentTraining = block({
+  label: "Recent Training & Applied Work",
+  schema: {
+    title: fields.text({
+      label: "Section Title",
+      defaultValue: "Recent Training & Applied Work",
+    }),
+    description: fields.text({
+      label: "Description",
+      multiline: true,
+    }),
+    items: fields.array(fields.text({ label: "Item" }), {
+      label: "Recent Work Items",
+      itemLabel: (item) => item.value || "New item",
+    }),
+  },
+});
+
+// What I am looking for block
+export const whatIAmLookingFor = block({
+  label: "What I am looking for",
+  schema: {
+    title: fields.text({
+      label: "Section Title",
+      defaultValue: "What I am looking for",
+    }),
+    badges: fields.array(fields.text({ label: "Badge" }), {
+      label: "Badges",
+      itemLabel: (item) => item.value || "New badge",
+    }),
+    description: fields.text({
+      label: "Description",
+      multiline: true,
+    }),
+  },
+});

@@ -49,6 +49,14 @@ const socialLinks = defineCollection({
   }),
   schema: z.object({
     linkedin: z.string().optional(),
+    email: z.string().optional(),
+  }),
+});
+
+const footer = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.mdoc", base: "./src/content/footer" }),
+  schema: z.object({
+    text: z.string().optional(),
   }),
 });
 
@@ -59,4 +67,5 @@ export const collections = {
   socialLinks,
   indexPage,
   resumePage,
+  footer,
 };
