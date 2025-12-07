@@ -49,6 +49,7 @@ export default config({
         avatar: fields.image({
           label: "Avatar",
           directory: "src/assets/images/authors",
+          publicPath: "@/assets/images/authors",
         }),
       },
     }),
@@ -81,7 +82,7 @@ export default config({
         profileImage: fields.image({
           label: "Profile Image",
           directory: "src/assets/images/site",
-          publicPath: "/src/assets/images/site",
+          publicPath: "@/assets/images/site",
           validation: { isRequired: false },
         }),
         // Links shown in the navbar
