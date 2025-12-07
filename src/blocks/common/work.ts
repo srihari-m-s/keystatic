@@ -113,3 +113,18 @@ export const whatIAmLookingFor = block({
     }),
   },
 });
+
+// Skills block - block component for skills
+export const skills = block({
+  label: "Skills",
+  schema: {
+    title: fields.text({
+      label: "Section Title",
+      defaultValue: "Skills",
+    }),
+    skillsList: fields.array(fields.text({ label: "Skill" }), {
+      label: "Skills",
+      itemLabel: (item) => item.value || "New skill",
+    }),
+  },
+});

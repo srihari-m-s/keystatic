@@ -1,5 +1,3 @@
-import { block } from "@keystatic/core/content-components";
-import { fields, singleton } from "@keystatic/core";
 import {
   sectionWrapper,
   heroSectionWrapper,
@@ -10,22 +8,9 @@ import {
   experienceItem,
   projectItem,
   projects,
+  skills,
 } from "./common/work";
-
-// Skills block - block component for skills展示
-export const skills = block({
-  label: "Skills",
-  schema: {
-    title: fields.text({
-      label: "Section Title",
-      defaultValue: "Skills",
-    }),
-    skillsList: fields.array(fields.text({ label: "Skill" }), {
-      label: "Skills",
-      itemLabel: (item) => item.value || "New skill",
-    }),
-  },
-});
+import { createPageSingleton } from "./common/pageSingleton";
 
 // Export all blocks as a single object
 export const resumePageBlocks = {
@@ -39,30 +24,11 @@ export const resumePageBlocks = {
   projectItem,
 };
 
-// Index page singleton definition
-export const resumePageSingleton = singleton({
+// Resume page singleton definition
+export const resumePageSingleton = createPageSingleton({
   label: "Resume Page",
   path: "src/content/resume-page/",
-  format: { data: "yaml", contentField: "content" },
-  schema: {
-    title: fields.text({
-      label: "Page Title",
-      description: "Main title for the index page",
-    }),
-    description: fields.text({
-      label: "Description",
-      description: "Brief description or tagline for the page",
-    }),
-    content: fields.markdoc({
-      label: "Content",
-      options: {
-        image: {
-          directory: "src/assets/images/resume",
-          publicPath: "/src/assets/images/resume",
-        },
-      },
-      components: resumePageBlocks,
-    }),
-  },
-  entryLayout: "content",
+  imageDirectory: "src/assets/images/resume",
+  imagePublicPath: "/src/assets/images/resume",
+  components: resumePageBlocks,
 });
