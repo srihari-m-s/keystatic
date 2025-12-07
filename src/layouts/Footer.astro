@@ -43,6 +43,18 @@ const hasFooterContent = Boolean(footerText || hasSocial);
 
         {hasSocial && (
           <div class="flex items-center justify-start md:justify-end">
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                class="inline-flex items-center justify-center rounded-full p-2 text-base-content/70 hover:text-accent transition-colors"
+                aria-label="Send email"
+              >
+                <Mail class="size-5" />
+              </a>
+            )}
+
+            {email && <Dot />}
+
             {linkedinUrl && (
               <a
                 href={linkedinUrl}
@@ -51,19 +63,7 @@ const hasFooterContent = Boolean(footerText || hasSocial);
                 class="inline-flex items-center justify-center rounded-full p-2 text-base-content/70 hover:text-accent transition-colors"
                 aria-label="LinkedIn profile"
               >
-                <Linkedin class="w-5 h-5" />
-              </a>
-            )}
-
-            <Dot class="mx-2" />
-
-            {email && (
-              <a
-                href={`mailto:${email}`}
-                class="inline-flex items-center justify-center rounded-full p-2 text-base-content/70 hover:text-accent transition-colors"
-                aria-label="Send email"
-              >
-                <Mail class="w-5 h-5" />
+                <Linkedin class="size-5" />
               </a>
             )}
           </div>
