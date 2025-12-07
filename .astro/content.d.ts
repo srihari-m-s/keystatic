@@ -203,6 +203,14 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"resumePage": Record<string, {
+  id: string;
+  body?: string;
+  collection: "resumePage";
+  data: InferEntrySchema<"resumePage">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 "socialLinks": Record<string, {
   id: string;
   body?: string;

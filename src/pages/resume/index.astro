@@ -1,0 +1,16 @@
+---
+import { getEntry, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const resumePageEntry = await getEntry("resumePage", "index");
+const renderedContent = resumePageEntry ? await render(resumePageEntry) : null;
+---
+
+<Layout
+  title={resumePageEntry?.data.title || "Portfolio"}
+  description={resumePageEntry?.data.description}
+>
+  <div class="max-w-4xl mx-auto prose lg:prose-lg">
+    {renderedContent ? <renderedContent.Content /> : null}
+  </div>
+</Layout>

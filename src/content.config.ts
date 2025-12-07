@@ -34,11 +34,29 @@ const indexPage = defineCollection({
   }),
 });
 
+const resumePage = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.mdoc", base: "./src/content/resume-page" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+  }),
+});
+
 const socialLinks = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.mdoc", base: "./src/content/social-links" }),
+  loader: glob({
+    pattern: "**/[^_]*.mdoc",
+    base: "./src/content/social-links",
+  }),
   schema: z.object({
     linkedin: z.string().optional(),
   }),
 });
 
-export const collections = { posts, authors, navbar, indexPage, socialLinks };
+export const collections = {
+  posts,
+  authors,
+  navbar,
+  socialLinks,
+  indexPage,
+  resumePage,
+};

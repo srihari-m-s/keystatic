@@ -28,10 +28,10 @@ export const skills = block({
 });
 
 // Export all blocks as a single object
-export const indexPageBlocks = {
+export const resumePageBlocks = {
   sectionWrapper,
   heroSectionWrapper,
-  hero: getHeroBlock({ imagePath: "src/assets/images/index" }),
+  hero: getHeroBlock({ imagePath: "src/assets/images/resume" }),
   experience,
   experienceItem,
   skills,
@@ -40,9 +40,9 @@ export const indexPageBlocks = {
 };
 
 // Index page singleton definition
-export const indexPageSingleton = singleton({
-  label: "Index Page",
-  path: "src/content/index-page/",
+export const resumePageSingleton = singleton({
+  label: "Resume Page",
+  path: "src/content/resume-page/",
   format: { data: "yaml", contentField: "content" },
   schema: {
     title: fields.text({
@@ -57,11 +57,11 @@ export const indexPageSingleton = singleton({
       label: "Content",
       options: {
         image: {
-          directory: "src/assets/images/index",
-          publicPath: "/src/assets/images/index",
+          directory: "src/assets/images/resume",
+          publicPath: "/src/assets/images/resume",
         },
       },
-      components: indexPageBlocks,
+      components: resumePageBlocks,
     }),
   },
   entryLayout: "content",
