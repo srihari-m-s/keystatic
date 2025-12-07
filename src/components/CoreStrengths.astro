@@ -1,5 +1,6 @@
 ---
 import { BadgeCheck } from "@lucide/astro";
+import { filterNonEmptyStrings } from "@/utils/string";
 
 interface Props {
   title: string;
@@ -8,12 +9,7 @@ interface Props {
 
 const { title, items } = Astro.props as Props;
 
-const isNonEmptyString = (value: unknown): value is string =>
-  typeof value === "string" && value.trim().length > 0;
-
-const strengths: string[] = Array.isArray(items)
-  ? items.filter(isNonEmptyString)
-  : [];
+const strengths: string[] = filterNonEmptyStrings(items);
 
 const headingId = "core-strengths-heading";
 ---

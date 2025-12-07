@@ -1,4 +1,6 @@
 ---
+import { filterNonEmptyStrings, isNonEmptyString } from "@/utils/string";
+
 interface Props {
   title: string;
   badges?: string[] | null;
@@ -7,12 +9,7 @@ interface Props {
 
 const { title, badges, description } = Astro.props as Props;
 
-const isNonEmptyString = (value: unknown): value is string =>
-  typeof value === "string" && value.trim().length > 0;
-
-const badgeItems: string[] = Array.isArray(badges)
-  ? badges.filter(isNonEmptyString)
-  : [];
+const badgeItems: string[] = filterNonEmptyStrings(badges);
 
 const headingId = "what-i-am-looking-for-heading";
 ---

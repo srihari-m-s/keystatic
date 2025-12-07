@@ -1,5 +1,7 @@
 ---
 import { CheckLine } from "@lucide/astro";
+import { filterNonEmptyStrings, isNonEmptyString } from "@/utils/string";
+
 interface Props {
   title: string;
   description: string;
@@ -8,12 +10,7 @@ interface Props {
 
 const { title, description, items } = Astro.props as Props;
 
-const isNonEmptyString = (value: unknown): value is string =>
-  typeof value === "string" && value.trim().length > 0;
-
-const bulletItems: string[] = Array.isArray(items)
-  ? items.filter(isNonEmptyString)
-  : [];
+const bulletItems: string[] = filterNonEmptyStrings(items);
 
 const headingId = "recent-training-heading";
 ---

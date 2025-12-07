@@ -1,4 +1,6 @@
 ---
+import { isNonEmptyString } from "@/utils/string";
+
 interface CtaItem {
   label: string;
   link: string;
@@ -12,9 +14,6 @@ interface Props {
 }
 
 const { title, subtitle, image, cta } = Astro.props as Props;
-
-const isNonEmptyString = (value: unknown): value is string =>
-  typeof value === "string" && value.trim().length > 0;
 
 const isCtaItem = (item: unknown): item is CtaItem => {
   if (typeof item !== "object" || item === null) return false;
