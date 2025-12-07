@@ -1,16 +1,5 @@
 ---
-import { getEntry, render } from "astro:content";
-import Layout from "../layouts/Layout.astro";
-
-const indexPageEntry = await getEntry("indexPage", "index");
-const renderedContent = indexPageEntry ? await render(indexPageEntry) : null;
+import SingletonContentPage from "../layouts/SingletonContentPage.astro";
 ---
 
-<Layout
-  title={indexPageEntry?.data.title || "Portfolio"}
-  description={indexPageEntry?.data.description}
->
-  <div class="max-w-full mx-auto prose lg:prose-lg">
-    {renderedContent ? <renderedContent.Content /> : null}
-  </div>
-</Layout>
+<SingletonContentPage singletonKey="indexPage" fallbackTitle="Portfolio" />
