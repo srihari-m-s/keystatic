@@ -1,7 +1,9 @@
 ---
+import MarkdocImage from "./MarkdocImage.astro";
+
 interface Author {
   name: string;
-  avatar?: string | null;
+  avatar?: ImageMetadata | string;
 }
 
 interface Props {
@@ -19,7 +21,7 @@ const hasAuthors = Array.isArray(authors) && authors.length > 0;
       {authors.map((author) => (
         <div class="flex items-center gap-2">
           {author.avatar && (
-            <img
+            <MarkdocImage
               src={author.avatar}
               alt={author.name}
               class="h-8 w-8 rounded-full object-cover"

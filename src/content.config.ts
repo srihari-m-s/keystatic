@@ -12,18 +12,20 @@ const posts = defineCollection({
 
 const authors = defineCollection({
   loader: glob({ pattern: "**/[^_]*.mdoc", base: "./src/content/authors" }),
-  schema: z.object({
-    name: z.string(),
-    avatar: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      avatar: image(),
+    }),
 });
 
 const navbar = defineCollection({
   loader: glob({ pattern: "**/[^_]*.mdoc", base: "./src/content/navbar" }),
-  schema: z.object({
-    profileImage: z.string().optional(),
-    links: z.array(z.object({ label: z.string(), href: z.string() })),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      profileImage: image(),
+      links: z.array(z.object({ label: z.string(), href: z.string() })),
+    }),
 });
 
 const indexPage = defineCollection({

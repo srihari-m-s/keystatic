@@ -2,7 +2,15 @@
 	"main": "dist/_worker.js/index.js",
   "name": "astro-keystatic-template",
   "compatibility_date": "2025-12-07",
-  "assets": {
-    "directory": "./dist"
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "./dist"
+	},
+	"observability": {
+    "enabled": true
   }
 }
