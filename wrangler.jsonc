@@ -12,5 +12,12 @@
 	},
 	"observability": {
     "enabled": true
+  },
+   "vars": {
+    "MODE": "production",
+    "KEYSTATIC_GITHUB_CLIENT_ID": "Iv23liaLbqLSAHfaJZyD",
+    "KEYSTATIC_GITHUB_CLIENT_SECRET": "ba4c30f80f7e99b77c474d6fa2615070bd021d9d",
+    "KEYSTATIC_SECRET": "a5cd292b1bd39930a5bdc3609cc64d501f5bb96044cee9135905c21df718b1e3cda69fca814ddaca",
+    "PUBLIC_KEYSTATIC_GITHUB_APP_SLUG": "keystatic-personal-site-template"
   }
 }

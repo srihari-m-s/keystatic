@@ -24,7 +24,7 @@ const githubStorage: GitHubConfig["storage"] = {
 const storage = IS_DEVELOPMENT ? localStorage : githubStorage;
 
 export default config({
-  storage,
+  storage: storage,
   collections: {
     posts: collection({
       entryLayout: "content",
