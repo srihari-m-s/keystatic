@@ -15,6 +15,14 @@ const KEYSTATIC_SECRET = import.meta.env.VITE_KEYSTATIC_SECRET;
 const PUBLIC_KEYSTATIC_GITHUB_APP_SLUG = import.meta.env
   .VITE_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
 
+console.log("KEYSTATIC_GITHUB_CLIENT_ID:", KEYSTATIC_GITHUB_CLIENT_ID);
+console.log("KEYSTATIC_GITHUB_CLIENT_SECRET:", KEYSTATIC_GITHUB_CLIENT_SECRET);
+console.log("KEYSTATIC_SECRET:", KEYSTATIC_SECRET);
+console.log(
+  "PUBLIC_KEYSTATIC_GITHUB_APP_SLUG:",
+  PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
+);
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic()],
