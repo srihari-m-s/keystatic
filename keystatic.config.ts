@@ -21,7 +21,7 @@ const githubStorage: GitHubConfig["storage"] = {
 };
 
 const storage =
-  process.env.NODE_ENV === "development" ? localStorage : githubStorage;
+  import.meta.env.MODE === "development" ? localStorage : githubStorage;
 
 export default config({
   storage: storage,
