@@ -3,10 +3,7 @@ import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 import tailwindcss from "@tailwindcss/vite";
-
 import cloudflare from "@astrojs/cloudflare";
-
-console.log("Current MODE:", import.meta.env.MODE);
 
 // https://astro.build/config
 export default defineConfig({
