@@ -6,7 +6,6 @@ import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
 
 console.log("Current Mode:", process.env.NODE_ENV);
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic()],

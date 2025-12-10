@@ -20,11 +20,9 @@ const githubStorage: GitHubConfig["storage"] = {
   },
 };
 
-const storage =
-  process.env.NODE_ENV === "development" ? localStorage : githubStorage;
-
 export default config({
-  storage: storage,
+  storage:
+    process.env.NODE_ENV === "development" ? localStorage : githubStorage,
   collections: {
     posts: collection({
       entryLayout: "content",
