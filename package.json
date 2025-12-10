@@ -34,6 +34,7 @@
     "daisyui": "^5.5.5",
     "tailwindcss": "^4.1.17",
     "tailwindcss-pattern": "^0.1.0",
+    "vite": "^7.2.7",
     "wrangler": "^4.53.0"
   }
 }
