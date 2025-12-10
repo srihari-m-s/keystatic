@@ -7,7 +7,6 @@ import {
   type GitHubConfig,
 } from "@keystatic/core";
 import { indexPageSingleton } from "@/blocks/index-page";
-import { IS_DEVELOPMENT } from "@/const/common";
 
 const localStorage: LocalConfig["storage"] = {
   kind: "local",
@@ -21,7 +20,8 @@ const githubStorage: GitHubConfig["storage"] = {
   },
 };
 
-const storage = IS_DEVELOPMENT ? localStorage : githubStorage;
+const storage =
+  import.meta.env.MODE === "development" ? localStorage : githubStorage;
 
 export default config({
   storage: storage,
